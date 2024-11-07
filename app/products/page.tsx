@@ -2,7 +2,7 @@ import { fetchProductsList } from "@/app/lib/data";
 import { ProductsList } from "@/app/ui/products/ProductsList";
 
 export default async function Page() {
-  const data = await fetchProductsList();
+  const data = await fetchProductsList('latest');
 
   return (
     <main className="w-full">

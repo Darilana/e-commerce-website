@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { Product } from "@/app/types/products";
-import { formatPrice } from "@/app/lib/price";
+import { formatPrice } from "@/app/lib/priceUtils";
 
 interface ProductCardProps {
   product: Product;
@@ -53,6 +53,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           width={280}
           height={300}
           alt={product.description}
+          priority={true}
         />
       </div>
       <div className="flex flex-col gap-3 py-4">

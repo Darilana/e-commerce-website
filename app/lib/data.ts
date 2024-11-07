@@ -6,10 +6,10 @@ interface ProductListResponse {
   pagination: ProductsPagination;
 }
 
-export const fetchProductsList = async () => {
+export const fetchProductsList = async (collection: string) => {
   try {
     const response: AxiosResponse<ProductListResponse> = await axios.get(
-      "https://www.greatfrontend.com/api/projects/challenges/e-commerce/products?collection=latest",
+      `https://www.greatfrontend.com/api/projects/challenges/e-commerce/products?collection=${collection}`,
     );
     const { data: products, pagination } = response.data;
 

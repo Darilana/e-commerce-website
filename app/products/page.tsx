@@ -1,15 +1,12 @@
-import { fetchProductsList } from "@/app/lib/data";
-import { ProductsList } from "@/app/ui/products/ProductsList";
+import { fetchProductsList } from '@/app/lib/products';
+import { ProductsList } from '@/app/ui/products/ProductsList';
 
 export default async function Page() {
-  const data = await fetchProductsList('latest');
+    const { products } = await fetchProductsList('latest');
 
-  return (
-    <main className="w-full">
-      <ProductsList
-        products={data?.products || []}
-        headerTitle="Latest Arrivals"
-      />
-    </main>
-  );
+    return (
+        <main className="w-full h-screen">
+            <ProductsList products={products} headerTitle="Latest Arrivals" />
+        </main>
+    );
 }

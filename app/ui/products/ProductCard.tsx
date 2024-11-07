@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import { Product } from "@/app/types/products";
-import { formatPrice } from "@/app/lib/priceUtils";
+import { Product } from "@/app/types/product";
+import { formatPrice, getPriceByColor } from "@/app/lib/priceUtils";
 
 interface ProductCardProps {
   product: Product;
@@ -16,33 +16,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const getSelectedImageUrl = (color: string): string =>
     product.images.find((image) => image.color === color)?.image_url || "";
 
-  const getSelectedSalePrice = () => {
-    const inventoryByColor = product.inventory.filter(
-      (item) => item.color === selectedColor,
-    );
-    const salePrice = Math.min(
-      ...inventoryByColor.map((item) => item.sale_price),
-    );
-    const listPrice = Math.min(
-      ...inventoryByColor.map((item) => item.list_price),
-    );
-
-    if (salePrice === listPrice) {
-      return { salePrice: null, listPrice };
-    }
-
-    return { salePrice, listPrice };
-  };
-
   const handleColorChange = (color: string) => {
     if (color !== selectedColor) {
       setSelectedColor(color);
     }
   };
 
-  const { salePrice, listPrice } = getSelectedSalePrice();
+  const { salePrice, listPrice } = getPriceByColor(product, selectedColor);
   const formattedListPrice = formatPrice(listPrice);
-  const formattedSalePrice = salePrice && formatPrice(salePrice);
+  const formattedSalePrice = formatPrice(salePrice);
 
   return (
     <div className="lg:w-[280px] lg:h-[470px] flex flex-col">
@@ -68,7 +50,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <span className="font-normal text-lg text-neutral-500">
           {formattedListPrice}
         </span>
-        {salePrice && (
+        {salePrice !== listPrice && (
           <span className="font-normal text-xs line-through text-neutral-600">
             {formattedSalePrice}
           </span>

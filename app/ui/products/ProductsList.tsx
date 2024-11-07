@@ -1,4 +1,4 @@
-import { Product } from "@/app/types/products";
+import { Product } from "@/app/types/product";
 import { ProductCard } from "@/app/ui/products/ProductCard";
 
 interface ProductsListProps {

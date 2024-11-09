@@ -1,27 +1,31 @@
-import { Product } from "@/app/types/product";
-import { ProductCard } from "@/app/ui/products/ProductCard";
+'use client';
+
+import { Product } from '@/app/types/product';
+import { ProductCard } from '@/app/ui/products/ProductCard';
+import { ProductsListHeader } from '@/app/ui/products/ProductsListheader';
+import { EmptyProductList } from '@/app/ui/products/EmptyProductList';
 
 interface ProductsListProps {
-  headerTitle: string;
-  products: Product[];
+    products: Product[];
+    headerTitle: string;
 }
 
 export const ProductsList: React.FC<ProductsListProps> = ({
-  products,
-  headerTitle,
+    products,
+    headerTitle,
 }) => {
-  if (!products.length) {
-    return <div>No products to display</div>;
-  }
+    if (!products.length) {
+        return <EmptyProductList />;
+    }
 
-  return (
-    <section className="flex flex-col">
-      <header>{headerTitle}</header>
-      <div className="grid grid-cols-4 gap-4">
-        {products.map((product) => (
-          <ProductCard key={product.product_id} product={product} />
-        ))}
-      </div>
-    </section>
-  );
+    return (
+        <section className="flex flex-col gap-8 w-full 2xl:max-w-[1280px]">
+            <ProductsListHeader title={headerTitle} />
+            <div className="grid xl:grid-cols-4 md:grid-cols-3 gap-4 md:gap-8">
+                {products.map((product) => (
+                    <ProductCard key={product.product_id} product={product} />
+                ))}
+            </div>
+        </section>
+    );
 };

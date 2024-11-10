@@ -8,19 +8,26 @@ export interface ProductListResponse {
 }
 
 export const fetchProductsList = async (
-    collection: string
+    collection: string,
+    numberOfProductsToFetch: number = 9
 ): Promise<{
     products: Product[];
     pagination: ProductsPagination;
 }> => {
     try {
+        const url = new URL(`${process.env.hostURL}/products`);
+        const params = new URLSearchParams();
+        params.set('collection', collection);
+        params.set('per_page', String(numberOfProductsToFetch));
+        url.search = params.toString();
+
         const response: AxiosResponse<ProductListResponse> = await axios.get(
-            `${process.env.hostURL}/products?collection=${collection}`
+            url.href
         );
         const { data: products, pagination } = response.data;
 
         return { products, pagination };
-    } catch (e) {
+    } catch (_e) {
         throw new Error('Failed to fetch the list of products.');
     }
 };

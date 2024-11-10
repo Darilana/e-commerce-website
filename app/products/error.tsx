@@ -11,7 +11,6 @@ export default function Error({ error, reset }: ErrorProps) {
     useEffect(() => {
         console.error(error);
     }, [error]);
-    console.log({ error });
 
     return (
         <main className="flex h-screen flex-col items-center justify-center">

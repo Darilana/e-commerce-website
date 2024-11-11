@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { AppButton } from '../components/AppButton';
+import { AppButton } from '@/app/components/AppButton';
 
 interface ErrorProps {
     error: Error & { digest?: string };
@@ -16,7 +16,7 @@ export default function Error({ error, reset }: ErrorProps) {
     return (
         <main className="flex h-screen flex-col items-center justify-center">
             <h2 className="text-center">{error.message}</h2>
-            <AppButton title="Try again" onClick={() => reset()} />
+            <AppButton title="Try again" onClick={reset} />
         </main>
     );
 }

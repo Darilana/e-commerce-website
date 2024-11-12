@@ -1,10 +1,13 @@
 import { fetchProductsList } from '@/app/lib/products';
 import { ProductsList } from '@/app/ui/products/ProductsList';
-import { Collection, NUMBER_OF_LATEST_ARRIVAL } from '@/app/constants/products';
+import {
+    CollectionName,
+    NUMBER_OF_LATEST_ARRIVAL,
+} from '@/app/constants/products';
 
 export default async function Page() {
     const { products } = await fetchProductsList(
-        Collection.Latest,
+        CollectionName.Latest,
         NUMBER_OF_LATEST_ARRIVAL
     );
 

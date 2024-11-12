@@ -3,7 +3,10 @@ import axios from 'axios';
 import { fetchProductsList, ProductListResponse } from '../products';
 import { Product } from '@/app/types/product';
 import { ProductsPagination } from '@/app/types/productPagination';
-import { Collection, NUMBER_OF_LATEST_ARRIVAL } from '@/app/constants/products';
+import {
+    CollectionName,
+    NUMBER_OF_LATEST_ARRIVAL,
+} from '@/app/constants/products';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -28,21 +31,21 @@ describe('fetchProductsList', () => {
         mockedAxios.get.mockResolvedValue({ data: mockResponse });
 
         const result = await fetchProductsList(
-            Collection.Latest,
+            CollectionName.Latest,
             NUMBER_OF_LATEST_ARRIVAL
         );
 
         expect(result.products).toEqual(mockProducts);
         expect(result.pagination).toEqual(mockPagination);
         expect(mockedAxios.get).toHaveBeenCalledWith(
-            `https://www.greatfrontend.com/api/projects/challenges/e-commerce/products?collection=${Collection.Latest}&per_page=${NUMBER_OF_LATEST_ARRIVAL}`
+            `https://www.greatfrontend.com/api/projects/challenges/e-commerce/products?collection=${CollectionName.Latest}&per_page=${NUMBER_OF_LATEST_ARRIVAL}`
         );
     }),
         it('should throw an error when the API call fails', async () => {
             mockedAxios.get.mockRejectedValue(new Error('API error'));
 
-            await expect(fetchProductsList(Collection.Latest)).rejects.toThrow(
-                'Failed to fetch the list of products.'
-            );
+            await expect(
+                fetchProductsList(CollectionName.Latest)
+            ).rejects.toThrow('Failed to fetch the list of products.');
         });
 });

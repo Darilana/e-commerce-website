@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { Product } from '@/app/types/product';
 import { ProductsPagination } from '@/app/types/productPagination';
+import { CollectionName } from '@/app/constants/products';
 
 export interface ProductListResponse {
     data: Product[];
@@ -8,7 +9,7 @@ export interface ProductListResponse {
 }
 
 export const fetchProductsList = async (
-    collection: string,
+    collection: CollectionName,
     numberOfProductsToFetch: number = 9
 ): Promise<{
     products: Product[];

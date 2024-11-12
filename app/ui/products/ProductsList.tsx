@@ -19,9 +19,15 @@ export const ProductsList: React.FC<ProductsListProps> = ({
     }
 
     return (
-        <section className="flex flex-col gap-8 w-full 2xl:max-w-[1280px]">
+        <section
+            className="flex flex-col gap-8 w-full 2xl:max-w-[1280px]"
+            aria-labelledby="product-list-heading"
+        >
             <ProductsListHeader title={headerTitle} />
-            <div className="grid xl:grid-cols-4 md:grid-cols-3 gap-4 md:gap-8">
+            <div
+                className="grid xl:grid-cols-4 md:grid-cols-3 gap-4 md:gap-8"
+                role="list"
+            >
                 {products.map((product) => (
                     <ProductCard key={product.product_id} product={product} />
                 ))}

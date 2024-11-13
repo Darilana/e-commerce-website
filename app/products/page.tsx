@@ -4,6 +4,11 @@ import {
     CollectionName,
     NUMBER_OF_LATEST_ARRIVAL,
 } from '@/app/constants/products';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Products',
+};
 
 export default async function Page() {
     const { products } = await fetchProductsList(
@@ -12,7 +17,7 @@ export default async function Page() {
     );
 
     return (
-        <main className="w-full h-screen p-24 font-sans flex flex-col items-center ">
+        <main className="w-full h-screen lg:p-24 p-10 font-sans flex flex-col items-center">
             <ProductsList products={products} headerTitle="Latest Arrivals" />
         </main>
     );

@@ -25,7 +25,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
         >
             <ProductsListHeader title={headerTitle} />
             <div
-                className="grid xl:grid-cols-4 md:grid-cols-3 gap-4 md:gap-8"
+                className="grid xl:grid-cols-4 xl:gap-12 md:grid-cols-3 md:gap-8 gap-4"
                 role="list"
             >
                 {products.map((product) => (

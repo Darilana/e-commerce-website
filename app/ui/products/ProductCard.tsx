@@ -28,48 +28,49 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     return (
         <article
-            className="lg:w-[280px] lg:h-[470px] flex flex-col"
+            className="flex flex-col pb-5"
             role="listitem"
             aria-labelledby="product-name"
         >
-            <Image
-                className="lg:w-[280px] lg:h-[300px] object-cover rounded-lg"
-                src={getSelectedImageUrl(selectedColor)}
-                width={280}
-                height={300}
-                alt={product.description}
-                priority={true}
-            />
+            <div className="w-[280px] h-[300px] relative">
+                <Image
+                    className="object-cover rounded-lg"
+                    src={getSelectedImageUrl(selectedColor)}
+                    fill
+                    alt={product.description}
+                    priority={true}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                    }}
+                />
+            </div>
             <div className="flex flex-col gap-3 py-4">
-                <div className="flex flex-col gap-0.5">
-                    <p className="font-normal text-xs text-neutral-600">
-                        {selectedColor}
-                    </p>
-                    <p
-                        id="product-name"
-                        className="font-normal text-lg text-neutral-900"
-                    >
+                <div className="flex flex-col py-4 gap-0.5">
+                    <p className="text-xs text-neutral-600">{selectedColor}</p>
+                    <p id="product-name" className="text-lg text-neutral-900">
                         {product.name}
                     </p>
                 </div>
             </div>
             <div className="flex items-center gap-2">
                 <span
-                    className="font-normal text-lg text-neutral-500"
-                    aria-label="Standard price"
+                    className="text-lg text-neutral-500"
+                    aria-label="Current price"
                 >
-                    {formattedListPrice}
+                    {formattedSalePrice}
                 </span>
                 {salePrice !== listPrice && (
                     <span
-                        className="font-normal text-xs line-through text-neutral-600"
-                        aria-label="Sale price"
+                        className="text-xs text-neutral-600"
+                        aria-label="Old price"
                     >
-                        {formattedSalePrice}
+                        <s>{formattedListPrice}</s>
                     </span>
                 )}
             </div>
-            <div className="flex gap-1 mt-4" aria-label="Choose a color">
+            <div className="flex gap-2 pt-4" aria-label="Choose a color">
                 {product.colors.map((color) => {
                     return (
                         <button
@@ -79,8 +80,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             onClick={() => handleColorChange(color)}
                             style={{ backgroundColor: color }}
                             className={clsx(
-                                'w-4 h-4 rounded-full mr-1',
-                                color === 'white' && 'border border-gray-400'
+                                'w-4 h-4 rounded-full focus:outline focus:outline-2 focus:outline-blue-600 focus:outline-offset-2',
+                                color === 'white' && 'border border-gray-400',
+                                selectedColor === color &&
+                                    `outline outline-1 outline-gray-400 outline-offset-2`
                             )}
                         />
                     );

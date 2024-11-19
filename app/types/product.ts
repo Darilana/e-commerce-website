@@ -29,11 +29,17 @@ interface ProductCollection {
     name: string;
 }
 
+interface ProductInfo {
+    title: string;
+    description: string[];
+}
+
 export interface Product {
     product_id: string;
     rating: number;
     reviews: number;
-    size: number[];
+    sold: number;
+    sizes: number[];
     priceRange: {
         highest: number;
         lowest: number;
@@ -46,4 +52,5 @@ export interface Product {
     colors: string[];
     category: ProductCategory;
     collection: ProductCollection;
+    info?: ProductInfo[];
 }

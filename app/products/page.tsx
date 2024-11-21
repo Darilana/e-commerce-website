@@ -1,4 +1,4 @@
-import { fetchProductsList } from '@/app/lib/products';
+import { fetchProductsList } from '@/app/api/products';
 import { ProductsList } from '@/app/ui/products/ProductsList';
 import {
     CollectionName,

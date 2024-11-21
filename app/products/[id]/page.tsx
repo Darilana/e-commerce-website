@@ -1,4 +1,5 @@
-import { fetchProduct } from '@/app/lib/products';
+import { ProductProvider } from '@/app/contexts/ProductContext';
+import { fetchProduct } from '@/app/api/products';
 import { ProductDetails } from '@/app/ui/productDetails/ProductDetails';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -17,8 +18,10 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     }
 
     return (
-        <main className="w-full h-screen lg:p-24 p-10 font-sans flex flex-col items-center">
-            <ProductDetails product={product} />
-        </main>
+        <ProductProvider product={product}>
+            <main className="w-full h-screen lg:p-24 p-10 font-sansr">
+                <ProductDetails />
+            </main>
+        </ProductProvider>
     );
 }

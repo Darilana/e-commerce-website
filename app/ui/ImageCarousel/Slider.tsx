@@ -17,9 +17,8 @@ interface SliderProps {
 
 export const Slider: React.FC<SliderProps> = ({ images, activeThumb }) => {
     return (
-        <div className="w-full h-full flex-1 overflow-hidden">
+        <div>
             <Swiper
-                className="h-full"
                 grabCursor={true}
                 spaceBetween={10}
                 navigation={false}
@@ -28,17 +27,14 @@ export const Slider: React.FC<SliderProps> = ({ images, activeThumb }) => {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index} className="rounded-lg">
-                        <div className="relative w-full h-full">
-                            <Image
-                                src={image.image_url}
-                                className="object-cover rounded-lg"
-                                alt={`Slide ${index + 1}`}
-                                height={800}
-                                width={600}
-                                sizes="70vw"
-                                priority={index === 0 && true}
-                            />
-                        </div>
+                        <Image
+                            src={image.image_url}
+                            className="object-cover rounded-lg"
+                            alt={`Slide ${index + 1}`}
+                            height={600}
+                            width={800}
+                            priority={index === 0}
+                        />
                     </SwiperSlide>
                 ))}
             </Swiper>

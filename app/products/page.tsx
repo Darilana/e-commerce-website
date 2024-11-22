@@ -17,7 +17,7 @@ export default async function Page() {
     );
 
     return (
-        <main className="w-full h-screen lg:p-24 p-10 font-sans flex flex-col items-center">
+        <main className="w-full h-full lg:p-24 p-10 font-sans flex flex-col items-center">
             <ProductsList products={products} headerTitle="Latest Arrivals" />
         </main>
     );

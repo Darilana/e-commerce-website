@@ -19,7 +19,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
     return (
         <ProductProvider product={product}>
-            <main className="w-full h-screen lg:p-24 p-10 font-sansr">
+            <main className="w-full h-full lg:p-24 p-10 font-sansr">
                 <ProductDetails />
             </main>
         </ProductProvider>

@@ -30,12 +30,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const formattedSalePrice = formatPrice(salePrice);
 
     return (
-        <Link href={`/products/${product_id}`}>
-            <article
-                className="flex flex-col pb-5"
-                role="listitem"
-                aria-labelledby="product-name"
-            >
+        <article
+            className="flex flex-col pb-5"
+            role="listitem"
+            aria-labelledby="product-name"
+        >
+            <Link href={`/products/${product_id}`}>
                 <div className="w-[280px] h-[300px] relative">
                     <Image
                         className="object-cover rounded-lg"
@@ -79,27 +79,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         </span>
                     )}
                 </div>
-                <div className="flex gap-2 pt-4" aria-label="Choose a color">
-                    {colors.map((color) => {
-                        return (
-                            <button
-                                key={color}
-                                aria-pressed={selectedColor === color}
-                                aria-label={`Switch to color: ${color}`}
-                                onClick={() => handleColorChange(color)}
-                                style={{ backgroundColor: color }}
-                                className={clsx(
-                                    'w-4 h-4 rounded-full focus:outline focus:outline-2 focus:outline-blue-600 focus:outline-offset-2',
-                                    color === 'white' &&
-                                        'border border-gray-400',
-                                    selectedColor === color &&
-                                        `outline outline-1 outline-gray-400 outline-offset-2`
-                                )}
-                            />
-                        );
-                    })}
-                </div>
-            </article>
-        </Link>
+            </Link>
+            <div className="flex gap-2 pt-4" aria-label="Choose a color">
+                {colors.map((color) => {
+                    return (
+                        <button
+                            key={color}
+                            aria-pressed={selectedColor === color}
+                            aria-label={`Switch to color: ${color}`}
+                            onClick={() => handleColorChange(color)}
+                            style={{ backgroundColor: color }}
+                            className={clsx(
+                                'w-4 h-4 rounded-full focus:outline focus:outline-2 focus:outline-blue-600 focus:outline-offset-2',
+                                color === 'white' && 'border border-gray-400',
+                                selectedColor === color &&
+                                    `outline outline-1 outline-gray-400 outline-offset-2`
+                            )}
+                        />
+                    );
+                })}
+            </div>
+        </article>
     );
 };

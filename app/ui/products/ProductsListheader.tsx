@@ -1,6 +1,6 @@
 'use client';
 
-import { AppButton } from '@/app/components/AppButton';
+import { AppButton } from '@/app/ui/AppButton';
 
 interface ProductsListHeaderProps {
     title: string;

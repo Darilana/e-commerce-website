@@ -1,39 +1,15 @@
-interface ProductInventory {
-    color: string;
-    discount: number | null;
-    discount_percentage: number | null;
-    list_price: number;
-    sale_price: number;
-    size: number | null;
-    sku: string;
-    sold: number;
-    stock: number;
-}
-
-interface ProductImage {
-    color: string;
-    image_url: string;
-}
-
-interface ProductCategory {
-    category_id: string;
-    created_at: string;
-    name: string;
-}
-
-interface ProductCollection {
-    collection_id: string;
-    created_at: string;
-    description: string;
-    image_url: string;
-    name: string;
-}
+import { ProductCategory } from './productCategory';
+import { ProductCollection } from './productCollection';
+import { ProductImage } from './ProductImage';
+import { ProductInfo } from './productInfo';
+import { ProductInventory } from './productInventory';
 
 export interface Product {
     product_id: string;
     rating: number;
     reviews: number;
-    size: number[];
+    sold: number;
+    sizes: number[];
     priceRange: {
         highest: number;
         lowest: number;
@@ -46,4 +22,5 @@ export interface Product {
     colors: string[];
     category: ProductCategory;
     collection: ProductCollection;
+    info?: ProductInfo[];
 }

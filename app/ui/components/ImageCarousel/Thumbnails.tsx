@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import { ProductImage } from '@/app/types/ProductImage';
+import { ProductImage } from '@/app/types/productImage';
 
 interface ThumbnailsProps {
     images: ProductImage[];

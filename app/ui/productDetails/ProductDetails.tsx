@@ -1,6 +1,6 @@
 'use client';
 
-import { ImageCarousel } from '@/app/ui/ImageCarousel/ImageCarousel';
+import { ImageCarousel } from '@/app/ui/components/ImageCarousel/ImageCarousel';
 import { useProduct } from '@/app/contexts/ProductContext';
 // import { Product } from '@/app/types/product';
 import React from 'react';

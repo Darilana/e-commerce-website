@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import { SwiperClass } from 'swiper/react';
 
-import { ProductImage } from '../../types/ProductImage';
+import { ProductImage } from '../../../types/productImage';
 import { Slider } from './Slider';
 import { Thumbnails } from './Thumbnails';
 

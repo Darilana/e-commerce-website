@@ -1,6 +1,6 @@
 import { ProductCategory } from './productCategory';
 import { ProductCollection } from './productCollection';
-import { ProductImage } from './ProductImage';
+import { ProductImage } from './productImage';
 import { ProductInfo } from './productInfo';
 import { ProductInventory } from './productInventory';
 

@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-import { ProductImage } from '@/app/types/ProductImage';
+import { ProductImage } from '@/app/types/productImage';
 
 interface SliderProps {
     images: ProductImage[];
